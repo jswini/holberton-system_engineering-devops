@@ -1,3 +1,3 @@
-Holberton-system_engineering-devops
+# holberton-system_engineering-devops
 Created for project 0x00. Shell Basics
-Added to repository
+Adding to repository
