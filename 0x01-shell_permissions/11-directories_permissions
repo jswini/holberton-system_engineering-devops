@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R a+rx dir
+chmod -R a+x 
