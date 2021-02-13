@@ -1,0 +1,2 @@
+#!/bin/bash
+echo Chicago | cut --complement -c 1,4
