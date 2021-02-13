@@ -1,2 +1,2 @@
 #!/bin/bash
-cut --complement -c 1,4
+tr -d Cc
