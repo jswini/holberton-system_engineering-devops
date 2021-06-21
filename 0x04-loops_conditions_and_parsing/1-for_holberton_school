@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script outputs "Holberton School" 10 times
+LIST=$(echo {1..10})
+for i in $LIST; do echo "Holberton School"; done
+i=$i
