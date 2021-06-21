@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#This script prints the word "Hi" after the 9th iteration of a loop
+i=$i
+LIST=$(echo {1..10})
+for i in $LIST
+do
+echo "Holberton School"
+if [ "$i" -eq "9" ]
+then echo "Hi"
+fi
+done
