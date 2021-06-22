@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# this script kills script 4 to infinity and beyond
+stopme=$(pgrep -f to_)
+kill "$stopme"
