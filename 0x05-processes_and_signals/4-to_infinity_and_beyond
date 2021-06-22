@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# this script is an infinite loop of printing text
+while true
+do
+echo To infinity and beyond
+done
