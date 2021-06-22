@@ -3,7 +3,7 @@
 i="0"
 while [ "$i" -le "12" ]
 do
-    echo "hour: $i"
+    echo "Hour: $i"
     i=$((i+1))
     j="1"
     while [ "$j" -lt "60" ]
