@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#this script will display the pid of itself
+echo "$(pidof)"$$
