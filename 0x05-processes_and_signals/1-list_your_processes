@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-#this script displays all processes in a specific format
-ps -eo user,pid,%cpu,%mem,vsz,rss,tname,stat,start_time,bsdtime,cmd
+# this script displays all processes in a specific format
+ps x -eo user,pid,%cpu,%mem,vsz,rss,tname,stat,start_time,bsdtime,command
