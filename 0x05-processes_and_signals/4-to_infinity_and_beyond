@@ -2,5 +2,6 @@
 # this script is an infinite loop of printing text
 while true
 do
-echo To infinity and beyond
+    echo To infinity and beyond
+    sleep 2
 done
