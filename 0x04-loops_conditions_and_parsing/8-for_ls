@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #this script prints only the file name in a list format from ls
-ls > filenames
-for i in filenames
+ls >> filenames
+for i in ./filenames*
 do
     cut "$i" -d - -f2
 done
+rm filenames
