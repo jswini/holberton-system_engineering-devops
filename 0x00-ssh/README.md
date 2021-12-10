@@ -1,0 +1,1 @@
+This readme is for the SSH project for the Holberton Curriculum
