@@ -1,0 +1,1 @@
+This readme is for the web-server project for holberton school
