@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#this script installs nginx on a server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
+sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
