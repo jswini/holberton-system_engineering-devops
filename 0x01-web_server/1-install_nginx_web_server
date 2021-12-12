@@ -2,8 +2,14 @@
 #this script installs nginx on a server
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
-sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/
+\winikoff.tech
+sudo touch /var/www/winikoff/tech/html/index.html > Hello World
+sudo sed -i 's/root \/var\/www\/html/\/var\/www\/winikoff.tech\/html' \
+     /etc/nginx/sites-available/
+sudo sed -i 's/server_name _/server_name winikoff.tech www.winikoff.tech' \
+     /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/winikoff.tech /etc/nginx/sites-enabled/
 sudo sed -i 's/#server_names_hash_bucket_size 64/server_names_hash_bucket_size \
      64' etc/nginx/nginx.conf
 sudo service nginx restart
