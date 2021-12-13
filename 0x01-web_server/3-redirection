@@ -7,7 +7,8 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
 sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
 echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html
 search_string="server_name _;"
-to_replace="server_name test.com \n rewrite ^/(.*)redirect_me$
-		https://www.youtube.com/watch?v=QH2-TGUlwu4$1 permanent;"
-sudo sed -i "s/$search_string/$to_replace" /etc/nginx/sites-available/test.com
+to_replace="server_name winikoff.tech;\n\tlocation \
+	   /redirect_me {\n\t\treturn 301 https://youtube.com\
+	   /watch/uTyu3HwL-7Y;\n\t}"
+sudo sed -i "s@$search_string@$to_replace@" /etc/nginx/sites-available/default
 sudo service nginx restart
