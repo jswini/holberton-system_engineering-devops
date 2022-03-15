@@ -8,6 +8,6 @@ sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
 touch /var/www/html/index.html
 echo "Hello World" | sudo tee /var/www/html/index.html
 search_string="server_name _;"
-to_replace="server_name winikoff.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
+to_replace="server_name winikoff.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 \$scheme:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
 sudo sed -i "s/$search_string/$to_replace/" /etc/nginx/sites-available/default
 sudo service nginx restart
