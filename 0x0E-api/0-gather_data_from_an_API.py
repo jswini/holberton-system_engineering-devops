@@ -16,11 +16,12 @@ if __name__ == "__main__":
     task_completed_count = 0
     employee_id = int(sys.argv[1])
     employees = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                            .format(employee_id))
+                             .format(employee_id))
     employees_info = employees.json()['name']
     # (alt way for above)employees_info = employees.get('name')
-    all_tasks = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
-                            .format(employee_id))
+    all_tasks = requests.get(
+                'https://jsonplaceholder.typicode.com/todos?userId={}'
+                .format(employee_id))
     task_list = all_tasks.json()
 
     task_count = len(task_list)
@@ -30,6 +31,6 @@ if __name__ == "__main__":
         task_completed_count = len(task_completed)
 
         print('Employee {} is done with tasks({}/{})'
-            .format(employees_info, task_completed_count, task_count))
+              .format(employees_info, task_completed_count, task_count))
         for item in task_completed:
             print('\t {}'.format(item))
