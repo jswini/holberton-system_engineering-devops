@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#this script creates a keypair
+echo "y" | ssh-keygen -b 4096 -f school -N betty
+#echo "~.ssh/school"
+#echo "betty"
+#echo "betty"
+#echo "y"

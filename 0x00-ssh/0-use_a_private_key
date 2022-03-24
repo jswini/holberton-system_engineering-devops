@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#this script will log into a webserver at the ip address below
+ssh -i ~/.ssh/school ubuntu@34.75.217.64

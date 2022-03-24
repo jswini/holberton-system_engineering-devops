@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#this script installs nginx on a server
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo service nginx start
+#sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
+sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html
+touch /var/www/html/error404.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
+search_string="server_name _;"
+to_replace="server_name winikoff.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
+sudo sed -i "s/$search_string/$to_replace/" /etc/nginx/sites-available/default
+sudo sed -i "s/location/ \terror_page 404 /error404.html;\n\n\tlocation " /etc/nginx/sites-available/default
+sudo service nginx restart
