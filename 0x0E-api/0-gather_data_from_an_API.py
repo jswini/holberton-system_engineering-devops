@@ -29,8 +29,7 @@ if __name__ == "__main__":
         if task.get('completed') is True:
             task_completed.append(task.get('title'))
         task_completed_count = len(task_completed)
-
-        print('Employee {} is done with tasks({}/{})'
-              .format(employees_info, task_completed_count, task_count))
-        for item in task_completed:
-            print('\t {}'.format(item))
+    print('Employee {} is done with tasks({}/{})'
+            .format(employees_info, task_completed_count, task_count))
+    for item in task_completed:
+        print('\t {}'.format(item))
