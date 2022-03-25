@@ -14,29 +14,25 @@ if __name__ == "__main__":
     outputs data
     '''
     task_completed = []
-    task_completed_count = 0
+    # task_completed_count = 0
     employee_id = int(sys.argv[1])
     employees = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                              .format(employee_id))
-    employees_info = employees.json()['name']
+    employees_info = employees.json()['username']
     # (alt way for above)employees_info = employees.get('name')
     all_tasks = requests.get(
                 'https://jsonplaceholder.typicode.com/todos?userId={}'
                 .format(employee_id))
     task_list = all_tasks.json()
 
-    with open('2.csv', 'w', newline='')as f:
-        fields = ['userId', 'id', 'title', 'completed']
-        writer = csv.DictWriter(f, fieldnames=fields, dialect='unix')
-        print(csv.list_dialects())
-        writer.writerows(task_list)
-
-    """ task_count = len(task_list)
     for task in task_list:
-        if task.get('completed') is True:
-            task_completed.append(task.get('title'))
-        task_completed_count = len(task_completed)
-    print('Employee {} is done with tasks({}/{}):'
-          .format(employees_info, task_completed_count, task_count))
-    for item in task_completed:
-        print('\t {}'.format(item)) """
+        task_detail = []
+        task_detail.append(employee_id)
+        task_detail.append(employees_info)
+        task_detail.append(task.get('completed'))
+        task_detail.append(task.get('title'))
+        task_completed.append(task_detail)
+
+    with open('2.csv', 'w')as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        writer.writerow(task_completed)
