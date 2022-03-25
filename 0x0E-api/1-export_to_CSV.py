@@ -3,9 +3,9 @@
 This script will gather and process data from a REST API
  and process it for display
 '''
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == "__main__":
     '''
