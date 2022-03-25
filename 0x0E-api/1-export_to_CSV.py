@@ -25,14 +25,13 @@ if __name__ == "__main__":
                 .format(employee_id))
     task_list = all_tasks.json()
 
+    task_detail = []
     for task in task_list:
-        task_detail = []
         task_detail.append(employee_id)
         task_detail.append(employees_info)
         task_detail.append(str(task.get('completed')))
         task_detail.append(task.get('title'))
-        task_completed.append(task_detail)
 
-    with open('{}.csv'.format(employee_id), 'w')as f:
-        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-        writer.writerow(task_completed)
+    with open('{}.csv'.format(employee_id), 'w', newline='')as f:
+        writer = csv.writer(f, dialect='unix')
+        writer.writerow(task_detail)
