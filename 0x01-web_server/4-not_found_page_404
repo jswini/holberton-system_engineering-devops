@@ -3,13 +3,11 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo service nginx start
-#sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
-sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
-echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html
-touch /var/www/html/error404.html
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
-search_string="server_name _;"
-to_replace="server_name winikoff.tech;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t}"
-sudo sed -i "s/$search_string/$to_replace/" /etc/nginx/sites-available/default
-sudo sed -i "s/location/ \terror_page 404 /error404.html;\n\n\tlocation " /etc/nginx/sites-available/default
+echo "Hello World" | sudo tee /var/www/html/index.html
+search_string="^\tlocation / {"
+to_replace="\tlocation /redirect_me {\n\treturn 301 \$scheme://www.youtube.com/watch?v=exD-oGci-9M;\n\t}\n\tlocation / {"
+sudo sed -i "s@${search_string}/@${to_replace}@" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www.html/error404.html
+replace2="\terror_page 404 /error404.html;\n\tlocation / {"
+sudo sed -i "s@${search_string}/@${replace2}@" /etc/nginx/sites-available/default
 sudo service nginx restart
