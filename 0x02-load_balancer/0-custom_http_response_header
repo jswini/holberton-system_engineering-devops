@@ -10,9 +10,6 @@ search_string="^\tlocation / {"
 to_replace="\tlocation /redirect_me {\n\treturn 301 \$scheme://www.youtube.com/watch?v=exD-oGci-9M;\n\t}\n\tlocation / {"
 sudo sed -i "s@${search_string}@${to_replace}@" /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
-replace2="\terror_page 404 /error404.html;\n\tlocation / {"
+replace2="\terror_page 404 /error404.html;\n\tlocation / {\n\tadd_header $HOSTNAME;\n\tlocation /{"
 sudo sed -i "s@${search_string}@${replace2}@" /etc/nginx/sites-available/default
-server="server_name _;"
-replacement="server_name $HOSTNAME"
-sudo sed -i "s@${server}@${replacement}" /etc/nginx/sites-available/default
 sudo service nginx restart
