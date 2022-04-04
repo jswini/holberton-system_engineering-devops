@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#This script adds the subdomain www and points it to the load balancer
+#as well as other subdomains
+dig_func () {
+    if [ "$2" ]
+    then
+    domain=$2
+    subdomain="$2.$1"
+    dig $subdomain | awk '/answer section:/{getline; printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$2"
+    else
+        for sub in 'www', 'lb-01', 'web-01', 'web-02'
+        do
+        var=$sub.$1
+        dig "$var" | awk '/answer section:/{getline; printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var=$sub
+        done
+    fi
+}
+
+dig_func "$@"
